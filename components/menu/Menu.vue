@@ -1,26 +1,14 @@
 <script setup lang="ts">
-
-interface menuItem {
-  name: string,
+interface MenuItem {
+  name: string
   url: string
 }
 
-const menuitem = ref<menuItem[]>([])
+// Importa los datos del JSON
+import menuItems from '~/components/menu/menuItems.json'
 
-menuitem.value = [
-  {
-    name: 'FizzBuzz',
-    url: '/FizzBuzz'
-  },
-  {
-    name: 'TDD',
-    url: '/TDD'
-  },
-  {
-    name: 'Vitest',
-    url: '/Vitest'
-  }
-]
+// Usa los datos importados directamente
+const menuitem = ref<MenuItem[]>(menuItems)
 </script>
 <template>
   <header class="bg-gradient-to-r from-emerald-900 to-blue-900 shadow-[0_4px_12px_-2px_rgba(52,211,153,0.3)]">
