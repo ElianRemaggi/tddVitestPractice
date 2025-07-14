@@ -1,8 +1,7 @@
-
 [
   {
-    "name": "FizzBuzz",
-    "url": "/FizzBuzz"
+    "name": "Inicio",
+    "url": "/"
   },
   {
     "name": "TDD",
@@ -11,5 +10,9 @@
   {
     "name": "Vitest",
     "url": "/Vitest"
+  },  
+  {
+    "name": "FizzBuzz",
+    "url": "/FizzBuzz"
   }
 ]
