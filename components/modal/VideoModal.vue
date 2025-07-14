@@ -19,7 +19,7 @@ const emit = defineEmits<{ (e: 'close'): void }>()
                     </button>
 
                     <!-- CARD CON EL IFRAME -->
-                    <div class="overflow-hidden rounded-2xl bg-white shadow-xl">
+                    <div class="overflow-hidden rounded-2xl bg-black shadow-xl">
                         <div class="aspect-video w-full">
                             <iframe class="h-full w-full"
                                 src="https://www.youtube.com/embed/_t9l2TwGioc?rel=0&modestbranding=1"
@@ -34,7 +34,7 @@ const emit = defineEmits<{ (e: 'close'): void }>()
     </Teleport>
 </template>
 
-<style scoped>
+<style scoped >
 .fade-enter-active,
 .fade-leave-active {
     @apply transition-opacity duration-300;
