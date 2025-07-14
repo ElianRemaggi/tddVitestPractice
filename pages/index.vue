@@ -46,13 +46,14 @@ function closeVideo() {
                             clip-rule="evenodd"></path>
                     </svg>
                 </a>
+                            <VideoButton  @open="openVideo" />
+            <VideoModal  :isOpen="videoOpen" @close="closeVideo" />
             </div>
 
-            <VideoButton  @open="openVideo" />
-            <VideoModal  :isOpen="videoOpen" @close="closeVideo" />
+
 
             <div class="px-4 mt-10 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
-                <span class="font-semibold text-emerald-400 uppercase">RECURSOS DESTACADOS</span>
+                <span class="font-semibold text-emerald-400 uppercase">Contenido</span>
                 <div class="flex flex-wrap justify-center items-center mt-8 text-gray-300 sm:justify-between">
                     <a href="#" class="mr-5 mb-5 lg:mb-0 hover:text-emerald-300">
                         <div class="flex items-center flex-col">
