@@ -6,7 +6,14 @@
         class="flex flex-1 justify-center mx-20 text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-200">
         Fizz Buzz
       </NuxtLink>
-
+      <NuxtLink to="/TDD"
+        class="flex flex-1 justify-center mx-20 text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-200">
+        TDD Page
+      </NuxtLink>
+      <NuxtLink to="/Vitest"
+        class="flex flex-1 justify-center mx-20 text-sm font-semibold text-white hover:text-emerald-300 transition-colors duration-200">
+        Vitest Page
+      </NuxtLink>
     </nav>
   </header>
 </template>
