@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@media (width >=300px) {}
+
+@media (width < 1000px) {}
+
+@media (640px <=width < 768px) {}
+
+@media (width < 640px) {}
