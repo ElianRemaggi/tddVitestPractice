@@ -134,11 +134,14 @@ onUnmounted(() => {
 
 <style scoped>
 .particle-background {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    position: fixed;      /* fuera del flujo y pegado a la ventana */
+  inset: 0;             /* top:0; right:0; bottom:0; left:0 */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  pointer-events: none; /* no bloquea clics */
+  z-index: -1;   
 }
 
 .particle {
