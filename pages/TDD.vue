@@ -5,7 +5,7 @@
 
 
         <div class=" text-white antialiased">
-            <main class="flex flex-col items-center justify-center h-screen px-6">
+            <main class="flex flex-col items-center justify-center h-full px-6">
                 <!-- Tarjeta -->
                 <article
                     class="w-full max-w-3xl rounded-xl bg-gray-800/70 backdrop-blur-sm p-8 shadow-xl ring-1 ring-gray-700">

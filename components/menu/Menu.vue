@@ -16,7 +16,7 @@ const menuitem = ref<MenuItem[]>(menuItems)
 
       <NuxtLink v-for="item in menuitem" :key="item.url" 
         :to="item.url"
-        class="flex flex-1 justify-center mx-20 text-sm font-semibold text-white hover:text-emerald-300
+        class="flex flex-1 justify-center mx-auto text-sm font-semibold text-white hover:text-emerald-300
         transition-colors duration-200"
         >
         {{ item.name }}
