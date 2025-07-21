@@ -31,7 +31,7 @@
 
                     <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
                         Características principales
-                    </h2>
+                    </h2> 
                     <ul class="list-disc ml-5 space-y-2">
                         <li>
                             <span class="font-medium text-indigo-300">Velocidad:</span>
