@@ -31,7 +31,7 @@
 
                     <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
                         Características principales
-                    </h2> 
+                    </h2>
                     <ul class="list-disc ml-5 space-y-2">
                         <li>
                             <span class="font-medium text-indigo-300">Velocidad:</span>
@@ -81,41 +81,49 @@
                         Comandos esenciales
                     </h2>
                     <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code># instalar
-npm i -D vitest @vitest/ui
+ npm i --save-dev @nuxt/test-utils vitest @vue/test-utils happy-dom playwright-core</code></pre>
 
-# ejecutar en modo watch + UI
-npx vitest --ui
+                    <h4 class="mt-8 mb-4 text-md font-semibold text-emerald-300">
+                        Creamos vitest.config.ts
+                    </h4>
 
-# un solo pass (CI)
-npx vitest run
+                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
-# cobertura
-npx vitest run --coverage</code></pre>
+export default defineVitestConfig({
+    test: {
+        environment: 'happy-dom', 
+        globals: true,           
+        coverage: {
+            reporter: ['text', 'html'],
+            all: true
+        }
+    }
+})
+</code></pre>
 
-                    <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
-                        Ejemplo mínimo
+                    <h2 class="mt-8 mb-4 text-sm font-semibold text-emerald-300">
+                        Ejemplo Component Test
                     </h2>
-                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>// math.test.ts
-import { describe, it, expect } from 'vitest'
-import { sum } from './math'
+                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>import { describe, it, expect } from 'vitest'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
+import Counter from '@/components/counter/Counter.vue'
 
-describe('sum', () =&gt; {
-  it('adds two numbers', () =&gt; {
-    expect(sum(2, 3)).toBe(5)
-  })
-})</code></pre>
+describe('Counter.vue', () => {
+    it('incrementa el contador', async () => {
+        const wrapper = await mountSuspended(Counter)
+        expect(wrapper.text()).toContain('Clicked 0')
+        await wrapper.find('button').trigger('click')
+        expect(wrapper.text()).toContain('Clicked 1')
+    })
+})
+</code></pre>
 
-                    <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
-                        Cuándo elegir Vitest
-                    </h2>
-                    <p class="leading-relaxed">
-                        Si tu stack ya usa Vite (Vue 3, React, Svelte, Lit, Astro, Nuxt 3,
-                        etc.) y quieres ciclos de TDD rápidos, una API familiar y cobertura
-                        integrada, <strong>Vitest</strong> es la opción recomendada en 2025.
-                        Reemplaza a Jest sin fricción y se adapta tanto a pruebas unitarias
-                        como component tests (con @testing-library, Vue Test Utils, React
-                        Testing Library, etc.).
+                    <p class="leading-relaxed m-2">
+                        Para correr los test usaremos
                     </p>
+
+                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>npm run test</code></pre>
 
                     <footer class="mt-10 text-sm text-gray-400">
                         Documentación oficial →
