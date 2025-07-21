@@ -26,8 +26,8 @@ function closeVideo() {
                 </svg>
             </a>
             <div class="flex w-full m-3/4 justify-center">
-                <img src="@/assets/svg/logo.svg" alt="Logo" class="h-40 w-auto">
-                <img src="@/assets/svg/nuxt.svg" alt="Logo" class="h-40 w-auto">
+                <img src="@/app/assets/svg/logo.svg" alt="Logo" class="h-40 w-auto">
+                <img src="@/app/assets/svg/nuxt.svg" alt="Logo" class="h-40 w-auto">
             </div>
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                 Testing TDD - Vitest - Vue.js</h1>

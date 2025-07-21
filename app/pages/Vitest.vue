@@ -13,7 +13,7 @@
                 <article
                     class="w-full max-w-3xl rounded-xl bg-gray-800/70 backdrop-blur-sm p-8 shadow-xl ring-1 ring-gray-700">
                     <!-- Logo (opcional) -->
-                    <img src="@/assets/svg/logo.svg" alt="Vitest logo"
+                    <img src="@/app/assets/svg/logo.svg" alt="Vitest logo"
                         class="w-24 mx-auto mb-6 select-none pointer-events-none" />
 
                     <h1 class="mb-6 text-3xl font-bold text-emerald-400">
