@@ -1,18 +1,14 @@
-// tests/ButtonDefault.nuxt.spec.ts
-import { describe, it, expect, beforeAll } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+// tests/ButtonDefault.spec.ts
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
 import ButtonDefault from '../app/components/ui/ButtonDefault.vue'
 
-let wrapper: ReturnType<typeof mountSuspended>
-
-beforeAll(async () => {
-    wrapper = await mountSuspended(ButtonDefault, {
-        props: {
-            url: 'https://ejemplo.com',
-            title: 'Empezar'
-        }
+const factory = () =>
+    mount(ButtonDefault, {
+        props: { url: 'https://ejemplo.com', title: 'Empezar' }
     })
-})
+
+const wrapper = factory()
 
 describe('ButtonDefault.vue', () => {
     it('se monta sin errores', () => {
@@ -25,5 +21,12 @@ describe('ButtonDefault.vue', () => {
 
     it('enlace correcto', () => {
         expect(wrapper.get('a').attributes('href')).toBe('https://ejemplo.com')
+    })
+
+    it("ser clickeable", () => {
+        const wrapper = factory()
+        expect(wrapper.get('a').attributes('href')).toBe('https://ejemplo.com')
+        wrapper.get('a').trigger('click')
+        expect(window.location.href).toBe('https://ejemplo.com/')
     })
 })
