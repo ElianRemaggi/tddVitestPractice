@@ -1,18 +1,16 @@
 <script setup lang="ts">
-/* No se necesita lógica por ahora */
+
 </script>
 
 <template>
   <div class="min-h-screen mt-20 text-white">
-    <!-- Fondo animado -->
+
     <DotBackground class="absolute top-0 left-0 w-full h-full" />
 
-    <!-- Contenido -->
     <main class="flex items-center justify-center min-h-screen px-6 relative z-10">
       <article
         class="w-full max-w-3xl rounded-xl bg-gray-800/70 backdrop-blur-sm p-8 shadow-xl ring-1 ring-gray-700"
       >
-
 
         <h1 class="mb-6 text-3xl font-bold text-emerald-400">
           Kata Fizz Buzz
@@ -56,14 +54,18 @@
           <li>Refactoriza manteniendo todos los tests en verde.</li>
         </ol>
 
+        <ButtonRedirect :title="'Ver la Solución'" :url="'/FizzBuzzSolve'" class="mt-6" />
 
         <footer class="mt-10 text-sm text-gray-400">
           Practica la kata usando el ciclo
           <em>Red → Green → Refactor</em> y cronometra tu progreso. ¡Diviértete!
         </footer>
-      </article>
+  </article>
     </main>
   </div>
+
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
