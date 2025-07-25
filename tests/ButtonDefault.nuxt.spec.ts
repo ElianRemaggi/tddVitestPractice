@@ -1,7 +1,7 @@
 // tests/ButtonDefault.spec.ts
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ButtonDefault from '../app/components/ui/ButtonDefault.vue'
+import ButtonDefault from '../app/components/ui/ButtonRedirect.vue'
 
 const factory = () =>
     mount(ButtonDefault, {
