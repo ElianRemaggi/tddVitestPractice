@@ -49,6 +49,10 @@ defineExpose({ execute })
               const wrapper = await mountSuspended(FizzBuzzSolve)
               expect(wrapper.vm).toHaveProperty('execute');
               expect(wrapper.vm.execute).toBeInstanceOf(Function);
+              //Tambien funcionara 
+              expect( typeof wrapper.vm.execute).toBe('function');
+            })
+
             })
           </code>
         </pre>
@@ -68,6 +72,20 @@ defineExpose({ execute })
           En caso de requerirlo este seria el momento para relizar Refactor.
         </p>
 
+        <p class="mb-4 leading-relaxed">
+          Vamos a comprobar que el tipo de dato que devuelve FizzBuzz sea de tipo string, por lo que en nuestros test agregarmeos la verificacion: 
+        </p>
+
+        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+          <code>
+            it('FizzBuzz.execute should return string', async () => {
+              const wrapper = await mountSuspended(FizzBuzzSolve);
+              const executionResult = wrapper.vm.execute();
+              expect(typeof executionResult).toBe('string')
+            })
+          </code>
+        </pre>
+        
 
       </article>
     </main>
