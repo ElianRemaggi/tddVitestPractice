@@ -13,11 +13,13 @@ describe('FizzBuzzSolve.vue', () => {
         const wrapper = await mountSuspended(FizzBuzzSolve)
         expect(wrapper.vm).toHaveProperty('execute');
         expect(wrapper.vm.execute).toBeInstanceOf(Function);
+        //Tambien funcionara 
+        expect( typeof wrapper.vm.execute).toBe('function');
     })
 
     it('FizzBuzz.execute should return string', async () => {
         const wrapper = await mountSuspended(FizzBuzzSolve);
         const executionResult = wrapper.vm.execute();
-        expect(executionResult).toBeInstanceOf('string');
+        expect(typeof executionResult).toBe('string')
     })
 })
