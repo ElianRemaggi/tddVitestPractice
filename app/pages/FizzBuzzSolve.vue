@@ -97,7 +97,46 @@ defineExpose({ execute })
           </code>
         </pre>
         
+        <p class="mb-4 leading-relaxed">
+          Por ultimo vamos a agregar un test que se ejecutara una vez por cada parametro que le pasemos.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          Vamos a detallar unas cosas:
+        </p>
+        <ul class="list-disc ml-5 space-y-2 my-4">
+          <li>
+            <code>it.each([...])</code>: Test parametrizado (<em>table-driven</em>). Vitest ejecuta el mismo test tantas veces como filas haya en el array.
+          </li>
+          <li>
+            <code>[3, 'Fizz'], [6, 'Fizz'], …</code>: Cada sub-array es un caso de prueba: primer elemento (input) y resultado esperado (expected).
+          </li>
+          <li>
+            <code>('execute(%i) ⇒ "%s"', …)</code>: El primer argumento es el título dinámico del test.
+            <ul class="list-disc ml-5 mt-2 space-y-1">
+              <li><code>%i</code> se sustituye por el número (input).</li>
+              <li><code>%s</code> se sustituye por la cadena esperada (expected).</li>
+            </ul>
+          </li>
 
+        </ul>
+
+        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+          <code>
+            it.each([
+              [3, 'Fizz'],
+              [6, 'Fizz'],
+              [5, 'Buzz'],
+              [10, 'Buzz'],
+              [15, 'FizzBuzz'],
+              [30, 'FizzBuzz'],
+              [1, '1'],
+              [22, '22']
+            ])('execute(%i) ⇒ "%s"', async (input, expected) => {
+              const wrapper = await mountFizzBuzz()
+              expect(wrapper.vm.execute(input)).toBe(expected)
+            })
+          </code>
+        </pre>
       </article>
     </main>
   </div>
