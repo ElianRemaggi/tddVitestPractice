@@ -1,15 +1,15 @@
 <script setup lang="ts">
 
 //Funcion que se llama execute ,
-const execute  = (number : number) : string => {
-  
-  if(number % 3 === 0 && number % 5 === 0){
+const execute = (number: number): string => {
+
+  if (number % 3 === 0 && number % 5 === 0) {
     return "FizzBuzz"
   }
-  if(number % 3 === 0){
+  if (number % 3 === 0) {
     return "Fizz"
   }
-  if(number % 5 === 0){
+  if (number % 5 === 0) {
     return "Buzz"
   }
 
@@ -34,7 +34,7 @@ defineExpose({ execute })
         <p class="mb-4 leading-relaxed">
           Lo primero que tendriamos que hacer es buscar el test rojo.
           Un test minimo para comenzar a codificar la solucion. Un buen primer test seria que el componente se renderize
-          correctamente esto lo logramos con el codigo:
+          correctamente esto lo logramos con nuestro primer test:
         </p>
         <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
           <code>
@@ -51,52 +51,68 @@ defineExpose({ execute })
 
           </code>
         </pre>
-        <p class="mb-4 leading-relaxed"> Con este codigo podemos comprobar que el componente existe. Ahora que comprobamos que el componente tenemos que identificar el siguiente test rojo, vamos a necesitar una funcion execute para poder realizar la Kata. Cuando creemos una funcion es necesario exportarla para que vitest pueda leerla.
+        <p class="mb-4 leading-relaxed"> Con este codigo podemos comprobar que el componente existe.
+          Ya podemos usar " npm run test " para verificar que nuestro test esta en rojo.
+          A continuacion tendremos que creear la implementecion minima para pasar el test.
+        </p>
+        <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+          <code>
+            &lt;script setup lang="ts"&gt;
+            
+            &lt;/script&gt;
+
+            &lt;template&gt;
+              Componente FizzBuzzSolve
+            &lt;/template&gt;
+          </code>
+        </pre>
+        <p>Ahora que comprobamos que el componente tenemos que identificar el siguiente test rojo, vamos a necesitar una
+          funcion execute para poder realizar la Kata. Cuando creemos una funcion es necesario exportarla para que vitest pueda
+          leerla.
         </p>
         <p>Agregaremos el siguiente test para comprobar que exectue es una funcion</p>
         <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
-          <code>
-            it('FizzBuzz.execute should be a function', async () => {
-              const wrapper = await mountSuspended(FizzBuzzSolve)
-              expect(wrapper.vm).toHaveProperty('execute');
-              expect(wrapper.vm.execute).toBeInstanceOf(Function);
-              //Tambien funcionara 
-              expect( typeof wrapper.vm.execute).toBe('function');
-            })
-
-            })
-          </code>
-        </pre>
+  <code>
+    it('FizzBuzz.execute should be a function', async () => {
+    const wrapper = await mountSuspended(FizzBuzzSolve)
+    expect(wrapper.vm).toHaveProperty('execute');
+    expect(wrapper.vm.execute).toBeInstanceOf(Function);
+    //Tambien funcionara
+    expect( typeof wrapper.vm.execute).toBe('function');
+    })
+  </code>
+</pre>
 
         <p class="mb-4 leading-relaxed">
           El test por si solo fallara hasta que codifiquemos la respuesta minima.</p>
         <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
-          <code>
-            const execute = () => {
+  <code>
+    const execute = () => {
 
-            }
+    }
 
-            defineExpose({ execute })
-          </code>
-        </pre>
+    defineExpose({ execute })
+  </code>
+</pre>
         <p class="mb-4 leading-relaxed">
           En caso de requerirlo este seria el momento para relizar Refactor.
         </p>
 
         <p class="mb-4 leading-relaxed">
-          Vamos a comprobar que el tipo de dato que devuelve FizzBuzz sea de tipo string, por lo que en nuestros test agregarmeos la verificacion: 
+          Vamos a comprobar que el tipo de dato que devuelve FizzBuzz sea de tipo string, por lo que en nuestros test
+          agregarmeos la verificacion:
         </p>
 
         <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
-          <code>
-            it('FizzBuzz.execute should return string', async () => {
-              const wrapper = await mountSuspended(FizzBuzzSolve);
-              const executionResult = wrapper.vm.execute();
-              expect(typeof executionResult).toBe('string')
-            })
-          </code>
-        </pre>
-        
+  <code>
+    it('FizzBuzz.execute should return string', async () => {
+    const wrapper = await mountSuspended(FizzBuzzSolve);
+    const executionResult = wrapper.vm.execute();
+    expect(typeof executionResult).toBe('string')
+    })
+  </code>
+</pre>
+
         <p class="mb-4 leading-relaxed">
           Por ultimo vamos a agregar un test que se ejecutara una vez por cada parametro que le pasemos.
         </p>
@@ -105,10 +121,14 @@ defineExpose({ execute })
         </p>
         <ul class="list-disc ml-5 space-y-2 my-4">
           <li>
-            <code>it.each([...])</code>: Test parametrizado (<em>table-driven</em>). Vitest ejecuta el mismo test tantas veces como filas haya en el array.
+            <code>it.each([...])</code>: Test parametrizado (<em>table-driven</em>). Vitest ejecuta el mismo test tantas
+            veces
+            como filas haya en el array.
           </li>
           <li>
-            <code>[3, 'Fizz'], [6, 'Fizz'], …</code>: Cada sub-array es un caso de prueba: primer elemento (input) y resultado esperado (expected).
+            <code>[3, 'Fizz'], [6, 'Fizz'], …</code>: Cada sub-array es un caso de prueba: primer elemento (input) y
+            resultado
+            esperado (expected).
           </li>
           <li>
             <code>('execute(%i) ⇒ "%s"', …)</code>: El primer argumento es el título dinámico del test.
@@ -121,22 +141,22 @@ defineExpose({ execute })
         </ul>
 
         <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
-          <code>
-            it.each([
-              [3, 'Fizz'],
-              [6, 'Fizz'],
-              [5, 'Buzz'],
-              [10, 'Buzz'],
-              [15, 'FizzBuzz'],
-              [30, 'FizzBuzz'],
-              [1, '1'],
-              [22, '22']
-            ])('execute(%i) ⇒ "%s"', async (input, expected) => {
-              const wrapper = await mountFizzBuzz()
-              expect(wrapper.vm.execute(input)).toBe(expected)
-            })
-          </code>
-        </pre>
+  <code>
+    it.each([
+    [3, 'Fizz'],
+    [6, 'Fizz'],
+    [5, 'Buzz'],
+    [10, 'Buzz'],
+    [15, 'FizzBuzz'],
+    [30, 'FizzBuzz'],
+    [1, '1'],
+    [22, '22']
+    ])('execute(%i) ⇒ "%s"', async (input, expected) => {
+    const wrapper = await mountFizzBuzz()
+    expect(wrapper.vm.execute(input)).toBe(expected)
+    })
+  </code>
+</pre>
       </article>
     </main>
   </div>
