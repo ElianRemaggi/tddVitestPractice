@@ -141,23 +141,82 @@ defineExpose({ execute })
         </ul>
 
         <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
-  <code>
-    it.each([
-    [3, 'Fizz'],
-    [6, 'Fizz'],
-    [5, 'Buzz'],
-    [10, 'Buzz'],
-    [15, 'FizzBuzz'],
-    [30, 'FizzBuzz'],
-    [1, '1'],
-    [22, '22']
-    ])('execute(%i) ⇒ "%s"', async (input, expected) => {
-    const wrapper = await mountFizzBuzz()
-    expect(wrapper.vm.execute(input)).toBe(expected)
-    })
-  </code>
-</pre>
-      </article>
+        <code>
+          it.each([
+          [3, 'Fizz'],
+          [6, 'Fizz'],
+          [5, 'Buzz'],
+          [10, 'Buzz'],
+          [15, 'FizzBuzz'],
+          [30, 'FizzBuzz'],
+          [1, '1'],
+          [22, '22']
+          ])('execute(%i) ⇒ "%s"', async (input, expected) => {
+          const wrapper = await mountFizzBuzz()
+          expect(wrapper.vm.execute(input)).toBe(expected)
+          })
+        </code>
+      </pre>
+
+
+      
+      <h4 class="mb-6 text-xl font-bold text-emerald-400">
+          Extra
+      </h4>
+ 
+      <p class="mb-4 leading-relaxed">
+        Para testear props vamos a crear una pill, para ello crearemos un nuevo archivo de test : FizzBuzzPill.nuxt.spec.ts
+      </p>
+
+      <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <code>
+          import { mount } from '@vue/test-utils';
+import { describe, it, expect } from 'vitest';
+          import FizzBuzzPill from '../app/components/ui/fizzBuzzPill.vue';
+
+          describe('FizzBuzzPill.vue', () => {
+              it('debería renderizar el texto y aplicar el color pasados por props', () => {
+                  const text = 'Hello, World!';
+                  const color = 'red';
+
+                  const wrapper = mount(FizzBuzzPill, {
+                      props: {
+                          text: text,
+                          color: color
+                      }
+                  });
+
+                  expect(wrapper.text()).toBe(text);
+
+                  const divElement = wrapper.find('div');
+                  expect(divElement.attributes().style).toContain(`color: ${color}`);
+              });
+
+              it('debería tener las props definidas correctamente', () => {
+                  const wrapper = mount(FizzBuzzPill);
+
+                  const { props } = wrapper.vm.$options;
+
+                  expect(props.text).toBeDefined();
+                  expect(props.text).toBe(String);
+
+                  expect(props.color).toBeDefined();
+                  expect(props.color).toBe(String);
+              });
+          });
+        </code>
+      </pre>
+
+
+      <h4 class="mb-6 text-1xl font-bold text-emerald-400">
+          Llamamos a la funcion final de 1 a 100 :
+      </h4>
+
+      <div class="flex">
+        
+      </div>
+
+    </article>
     </main>
   </div>
 
