@@ -16,6 +16,12 @@ const execute = (number: number): string => {
   return number.toString()
 }
 
+const pills = computed(() =>
+  Array.from({ length: 100 }, (_, i) => ({
+    id:   i + 1,          // 1 … 100
+    text: execute(i + 1) // Fizz/Buzz/FizzBuzz/ número
+  }))
+)
 defineExpose({ execute })
 
 </script>
@@ -237,9 +243,11 @@ import { describe, it, expect } from 'vitest';
           Llamamos a la funcion final de 1 a 100 :
         </h4>
 
-        <div class="flex">
 
-        </div>
+          <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
+            <FizzBuzzPill v-for="pill in pills" :key="pill.id" :text="pill.text" />
+          </div>
+
 
       </article>
     </main>
