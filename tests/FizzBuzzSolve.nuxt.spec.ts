@@ -53,7 +53,7 @@ describe('FizzBuzzSolve.vue', () => {
     [30, 'FizzBuzz'],
     [1, '1'],
     [22, '22']
-  ])('execute(%i) ⇒ "%s"', async (input, expected) => {
+  ])('execute(%i) ⇒ "%s"', async (input, expected) => { //('execute(%i) ⇒ "%s"', …): El primer argumento es el título dinámico del test.
     const wrapper = await mountFizzBuzz()
     expect(wrapper.vm.execute(input)).toBe(expected)
   })
