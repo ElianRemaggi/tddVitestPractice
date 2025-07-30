@@ -67,7 +67,8 @@ defineExpose({ execute })
           </code>
         </pre>
         <p>Ahora que comprobamos que el componente tenemos que identificar el siguiente test rojo, vamos a necesitar una
-          funcion execute para poder realizar la Kata. Cuando creemos una funcion es necesario exportarla para que vitest pueda
+          funcion execute para poder realizar la Kata. Cuando creemos una funcion es necesario exportarla para que
+          vitest pueda
           leerla.
         </p>
         <p>Agregaremos el siguiente test para comprobar que exectue es una funcion</p>
@@ -112,7 +113,28 @@ defineExpose({ execute })
     })
   </code>
 </pre>
+        <p class="mb-4 loading-relaxed">
+          Crearemos un test para comprobar que los parametros se estan tomando de manera adecuada
+        </p>
 
+        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">">
+          <code>
+            it('debería tener las props definidas correctamente', () => {
+                const wrapper = mount(FizzBuzzPill, {
+                    props: { text: 'Fizz' }
+                })
+
+                const optionsProps = wrapper.vm.$options.props!
+                expect(optionsProps.text).toBeDefined()
+                expect(optionsProps.text.type).toBe(String)
+
+                expect(wrapper.props('text')).toBe('Fizz')
+
+                expect(wrapper.text()).toContain('Fizz')
+
+            });
+          </code>
+        </pre>
         <p class="mb-4 leading-relaxed">
           Por ultimo vamos a agregar un test que se ejecutara una vez por cada parametro que le pasemos.
         </p>
@@ -140,6 +162,8 @@ defineExpose({ execute })
 
         </ul>
 
+
+
         <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
         <code>
           it.each([
@@ -159,16 +183,17 @@ defineExpose({ execute })
       </pre>
 
 
-      
-      <h4 class="mb-6 text-xl font-bold text-emerald-400">
-          Extra
-      </h4>
- 
-      <p class="mb-4 leading-relaxed">
-        Para testear props vamos a crear una pill, para ello crearemos un nuevo archivo de test : FizzBuzzPill.nuxt.spec.ts
-      </p>
 
-      <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <h4 class="mb-6 text-xl font-bold text-emerald-400">
+          Extra
+        </h4>
+
+        <p class="mb-4 leading-relaxed">
+          Para testear props vamos a crear una pill, para ello crearemos un nuevo archivo de test :
+          FizzBuzzPill.nuxt.spec.ts
+        </p>
+
+        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
         <code>
           import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
@@ -208,15 +233,15 @@ import { describe, it, expect } from 'vitest';
       </pre>
 
 
-      <h4 class="mb-6 text-1xl font-bold text-emerald-400">
+        <h4 class="mb-6 text-1xl font-bold text-emerald-400">
           Llamamos a la funcion final de 1 a 100 :
-      </h4>
+        </h4>
 
-      <div class="flex">
-        
-      </div>
+        <div class="flex">
 
-    </article>
+        </div>
+
+      </article>
     </main>
   </div>
 
