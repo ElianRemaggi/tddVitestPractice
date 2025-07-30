@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 interface Props {
-  text: string;
+    text: string;
 }
 
 const props = defineProps<Props>();
@@ -20,7 +20,7 @@ defineExpose({getColorByText})
 </script>
 
 <template>
-    <div class="flex items-center justify-center h-screen rounded-3xl">
+    <div class="flex items-center justify-center rounded-3xl p-2 m-2" :class="getColorByText(text)">
         <span >{{text}}</span>
     </div>
 </template>
