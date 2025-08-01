@@ -81,7 +81,18 @@
                         Comandos esenciales
                     </h2>
                     <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code># instalar
- npm i --save-dev @nuxt/test-utils vitest @vue/test-utils happy-dom playwright-core</code></pre>
+                        npm install -D @vue/test-utils happy-dom @nuxt/test-utils vitest playwright-core
+                    </code></pre>
+                    
+                <h4 class="mt-8 mb-4 text-md font-semibold text-emerald-300">
+                        Configuramos script de test en package.json
+                    </h4>
+
+                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>
+                        "scripts": {
+                            "test": "vitest"
+                        }
+                    </code></pre>
 
                     <h4 class="mt-8 mb-4 text-md font-semibold text-emerald-300">
                         Creamos vitest.config.ts
@@ -101,6 +112,12 @@ export default defineVitestConfig({
     }
 })
 </code></pre>
+                    <h2 class="mt-8 mb-4 text-sm font-semibold text-emerald-300"> 
+                        Tipos de test
+                    </h2>
+                    <p>
+                        
+                    </p>
 
                     <h2 class="mt-8 mb-4 text-sm font-semibold text-emerald-300">
                         Ejemplo Component Test
