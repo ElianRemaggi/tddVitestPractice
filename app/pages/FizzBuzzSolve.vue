@@ -18,7 +18,7 @@ const execute = (number: number): string => {
 
 const pills = computed(() =>
   Array.from({ length: 100 }, (_, i) => ({
-    id:   i + 1,          // 1 … 100
+    id: i + 1,          // 1 … 100
     text: execute(i + 1) // Fizz/Buzz/FizzBuzz/ número
   }))
 )
@@ -37,12 +37,12 @@ defineExpose({ execute })
           Kata Fizz Buzz Solution
         </h1>
 
-        <p class="mb-4 leading-relaxed">
+        <p>
           Lo primero que tendriamos que hacer es buscar el test rojo.
           Un test minimo para comenzar a codificar la solucion. Un buen primer test seria que el componente se renderize
           correctamente esto lo logramos con nuestro primer test:
         </p>
-        <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <pre>
           <code>
           import { describe, it, expect } from 'vitest'
           import { mountSuspended } from '@nuxt/test-utils/runtime'
@@ -57,11 +57,11 @@ defineExpose({ execute })
 
           </code>
         </pre>
-        <p class="mb-4 leading-relaxed"> Con este codigo podemos comprobar que el componente existe.
+        <p> Con este codigo podemos comprobar que el componente existe.
           Ya podemos usar " npm run test " para verificar que nuestro test esta en rojo.
           A continuacion tendremos que creear la implementecion minima para pasar el test.
         </p>
-        <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <pre>
           <code>
             &lt;script setup lang="ts"&gt;
             
@@ -77,8 +77,8 @@ defineExpose({ execute })
           vitest pueda
           leerla.
         </p>
-        <p>Agregaremos el siguiente test para comprobar que exectue es una funcion</p>
-        <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <p>Si bien podriamos crear useFizzBuzz como un composable, veremos como testear unafuncion de un comopnente en Nuxt. Agregaremos el siguiente test para comprobar que exectue es una funcion</p>
+        <pre>
   <code>
     it('FizzBuzz.execute should be a function', async () => {
     const wrapper = await mountSuspended(FizzBuzzSolve)
@@ -90,9 +90,9 @@ defineExpose({ execute })
   </code>
 </pre>
 
-        <p class="mb-4 leading-relaxed">
+        <p>
           El test por si solo fallara hasta que codifiquemos la respuesta minima.</p>
-        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <pre>
   <code>
     const execute = () => {
 
@@ -101,16 +101,16 @@ defineExpose({ execute })
     defineExpose({ execute })
   </code>
 </pre>
-        <p class="mb-4 leading-relaxed">
+        <p>
           En caso de requerirlo este seria el momento para relizar Refactor.
         </p>
 
-        <p class="mb-4 leading-relaxed">
+        <p>
           Vamos a comprobar que el tipo de dato que devuelve FizzBuzz sea de tipo string, por lo que en nuestros test
           agregarmeos la verificacion:
         </p>
 
-        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <pre>
   <code>
     it('FizzBuzz.execute should return string', async () => {
     const wrapper = await mountSuspended(FizzBuzzSolve);
@@ -119,11 +119,11 @@ defineExpose({ execute })
     })
   </code>
 </pre>
-        <p class="mb-4 loading-relaxed">
+        <p >
           Crearemos un test para comprobar que los parametros se estan tomando de manera adecuada
         </p>
 
-        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">">
+        <pre>">
           <code>
             it('debería tener las props definidas correctamente', () => {
                 const wrapper = mount(FizzBuzzPill, {
@@ -141,10 +141,10 @@ defineExpose({ execute })
             });
           </code>
         </pre>
-        <p class="mb-4 leading-relaxed">
+        <p>
           Por ultimo vamos a agregar un test que se ejecutara una vez por cada parametro que le pasemos.
         </p>
-        <p class="mb-4 leading-relaxed">
+        <p>
           Vamos a detallar unas cosas:
         </p>
         <ul class="list-disc ml-5 space-y-2 my-4">
@@ -170,7 +170,7 @@ defineExpose({ execute })
 
 
 
-        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <pre>
         <code>
           it.each([
           [3, 'Fizz'],
@@ -190,63 +190,61 @@ defineExpose({ execute })
 
 
 
-        <h4 class="mb-6 text-xl font-bold text-emerald-400">
+        <h4 class="my-6 text-xl font-bold text-emerald-400">
           Extra
         </h4>
 
-        <p class="mb-4 leading-relaxed">
+        <p>
           Para testear props vamos a crear una pill, para ello crearemos un nuevo archivo de test :
           FizzBuzzPill.nuxt.spec.ts
         </p>
 
-        <pre class=" bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner">
+        <pre>
         <code>
           import { mount } from '@vue/test-utils';
-import { describe, it, expect } from 'vitest';
+          import { describe, it, expect } from 'vitest';
           import FizzBuzzPill from '../app/components/ui/fizzBuzzPill.vue';
 
-          describe('FizzBuzzPill.vue', () => {
-              it('debería renderizar el texto y aplicar el color pasados por props', () => {
-                  const text = 'Hello, World!';
-                  const color = 'red';
+      describe('FizzBuzzPill.vue', () => {
+        it('debería renderizar el texto y aplicar el color pasados por props', () => {
+                const text = 'Hello, World!';
+                const color = 'red';
 
-                  const wrapper = mount(FizzBuzzPill, {
-                      props: {
-                          text: text,
-                          color: color
-                      }
-                  });
+                const wrapper = mount(FizzBuzzPill, {
+                    props: {
+                        text: text,
+                        color: color
+                    }
+                });
 
-                  expect(wrapper.text()).toBe(text);
+                expect(wrapper.text()).toBe(text);
+                const divElement = wrapper.find('div');
+                expect(divElement.attributes().style).toContain(`color: ${color}`);
+            });
 
-                  const divElement = wrapper.find('div');
-                  expect(divElement.attributes().style).toContain(`color: ${color}`);
-              });
+            it('debería tener las props definidas correctamente', () => {
+                const wrapper = mount(FizzBuzzPill);
+                const { props } = wrapper.vm.$options;
 
-              it('debería tener las props definidas correctamente', () => {
-                  const wrapper = mount(FizzBuzzPill);
+                expect(props.text).toBeDefined();
+                expect(props.text).toBe(String);
 
-                  const { props } = wrapper.vm.$options;
-
-                  expect(props.text).toBeDefined();
-                  expect(props.text).toBe(String);
-
-                  expect(props.color).toBeDefined();
-                  expect(props.color).toBe(String);
+                expect(props.color).toBeDefined();
+                expect(props.color).toBe(String);
               });
           });
         </code>
       </pre>
 
 
-        <h4 class="mb-6 text-1xl font-bold text-emerald-400">
+        <h4 class="my-6 text-2xl font-bold text-emerald-400">
           Llamamos a la funcion final de 1 a 100 :
         </h4>
 
 
-          <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
-            <FizzBuzzPill v-for="pill in pills" :key="pill.id" :text="pill.text" />
-          </div>
+        <div class="flex w-full flex-wrap justify-center gap-4 mt-4">
+          <FizzBuzzPill v-for="pill in pills" :key="pill.id" :text="pill.text" />
+        </div>
 
 
       </article>
@@ -255,4 +253,39 @@ import { describe, it, expect } from 'vitest';
 
 </template>
 
-<style scoped></style>
+
+<!-- al final de tu componente -->
+<style scoped>
+/* Tipografía y espaciado de los párrafos */
+p {
+  margin-bottom: 1rem; /* mb-4 */
+  line-height: 1.625; /* leading-relaxed */
+  color: rgb(229 231 235); /* text-gray-200 *
+}
+
+/* Cuadro de código con fondo, padding y scrollbar horizontal */
+pre {
+  margin-top: 1.5rem; /* my-6 */
+  margin-bottom: 1.5rem; /* my-6 */
+  background-color: rgb(17 24 39 / 0.6); /* bg-gray-900/60 */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  font-size: 0.875rem; /* text-sm */
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05); /* shadow-inner */
+  overflow-x: auto; /* overflow-x-auto */
+}
+
+/* Evita que el <code> se desborde verticalmente */
+code {
+  white-space: pre-wrap; /* whitespace-pre-wrap */
+}
+
+/* Listas con viñetas y separación uniforme */
+ul {
+  list-style-type: disc; /* list-disc */
+  margin-left: 1.25rem; /* ml-5 */
+  margin-top: 1rem; /* my-4 */
+  margin-bottom: 1rem; /* my-4 */
+}
+
+</style>
