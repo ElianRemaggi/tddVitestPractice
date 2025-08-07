@@ -261,7 +261,7 @@ p {
   margin-bottom: 1rem; /* mb-4 */
   line-height: 1.625; /* leading-relaxed */
   color: rgb(229 231 235); /* text-gray-200 *
-}
+} 
 
 /* Cuadro de código con fondo, padding y scrollbar horizontal */
 pre {

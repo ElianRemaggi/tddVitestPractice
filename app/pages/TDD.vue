@@ -1,3 +1,12 @@
+<script setup lang="ts">
+useHead({
+  title: 'What is TDD?',
+  meta: [
+    { name: 'description', content: 'Discover the benefits of Test-Driven Development (TDD) and how it can improve your code quality.' },
+    { name: 'keywords', content: 'TDD, Test-Driven Development, software development, testing, code quality' }
+  ]
+})
+</script>
 <template>
     <div class="min-h-screen mt-20">
 
@@ -107,9 +116,5 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-
-</script>
 
 <style scoped></style>

@@ -2,6 +2,13 @@
 
 </script>
 
+<head>
+    <title>Vitest - Fast JavaScript Testing</title>
+    <meta name="description" content="Learn about Vitest, a fast test runner powered by Vite, and how to use it for your JavaScript and TypeScript projects.">
+    <meta name="keywords" content="Vitest, testing, test runner, Vite, JavaScript, TypeScript">
+</head>
+
+
 <template>
     <div class="min-h-screen mt-20 text-white">
 

@@ -2,6 +2,12 @@
 
 const videoOpen = ref(false)
 
+useHead({
+  meta: [
+    { name: 'description', content: 'Explore a web application demonstrating TDD, Vitest, and classic programming problems like FizzBuzz.' },
+    { name: 'keywords', content: 'TDD, Vitest, FizzBuzz, programming, web development, testing' }
+  ]
+})
 function openVideo() {
     videoOpen.value = true
 }

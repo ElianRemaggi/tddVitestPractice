@@ -2,6 +2,13 @@
 
 </script>
 
+<head>
+  <meta name="description" content="Learn about the classic FizzBuzz problem and its various solutions.">
+  <meta name="keywords" content="FizzBuzz, programming, problem solving, code exercise">
+</head>
+
+
+
 <template>
   <div class="min-h-screen mt-20 text-white">
 
