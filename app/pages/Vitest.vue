@@ -2,6 +2,13 @@
 
 </script>
 
+<head>
+    <title>Vitest - Fast JavaScript Testing</title>
+    <meta name="description" content="Learn about Vitest, a fast test runner powered by Vite, and how to use it for your JavaScript and TypeScript projects.">
+    <meta name="keywords" content="Vitest, testing, test runner, Vite, JavaScript, TypeScript">
+</head>
+
+
 <template>
     <div class="min-h-screen mt-20 text-white">
 
@@ -81,7 +88,18 @@
                         Comandos esenciales
                     </h2>
                     <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code># instalar
- npm i --save-dev @nuxt/test-utils vitest @vue/test-utils happy-dom playwright-core</code></pre>
+npm install -D @vue/test-utils happy-dom @nuxt/test-utils vitest playwright-core
+                    </code></pre>
+                    
+                <h4 class="mt-8 mb-4 text-md font-semibold text-emerald-300">
+                        Configuramos script de test en package.json
+                    </h4>
+
+                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>
+"scripts": {
+    "test": "vitest"
+}
+                    </code></pre>
 
                     <h4 class="mt-8 mb-4 text-md font-semibold text-emerald-300">
                         Creamos vitest.config.ts
@@ -101,6 +119,12 @@ export default defineVitestConfig({
     }
 })
 </code></pre>
+                    <h2 class="mt-8 mb-4 text-sm font-semibold text-emerald-300"> 
+                        Tipos de test
+                    </h2>
+                    <p>
+
+                    </p>
 
                     <h2 class="mt-8 mb-4 text-sm font-semibold text-emerald-300">
                         Ejemplo Component Test
@@ -123,7 +147,72 @@ describe('Counter.vue', () => {
                         Para correr los test usaremos
                     </p>
 
-                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>npm run test</code></pre>
+                    <pre
+                        class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>npm run test</code></pre>
+
+
+                    <h1 class="mt-10 mb-6 text-3xl font-bold text-emerald-400">
+                        ¿Qué hace <code class="text-indigo-300">mountSuspended</code>?
+                    </h1>
+
+                    <p class="mb-4 leading-relaxed">
+                        <strong>mountSuspended</strong> es un&nbsp;helper que exporta
+                        <code>@nuxt/test-utils/runtime</code>. Monta tus componentes dentro de
+                        un entorno <em>Nuxt</em> real y espera automáticamente a que se resuelvan
+                        las promesas de <code>&lt;Suspense&gt;</code> o de
+                        <code>async&nbsp;setup()</code>.
+                    </p>
+
+                    <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
+                        ¿Qué hace por ti?
+                    </h2>
+                    <ul class="list-disc ml-5 space-y-2">
+                        <li>
+                            <span class="font-medium text-indigo-300">Contexto Nuxt:</span>
+                            plugins, auto-imports, rutas y
+                            <code>useRuntimeConfig()</code>&nbsp;funcionan sin mocks manuales.
+                        </li>
+                        <li>
+                            <span class="font-medium text-indigo-300">Sincroniza Suspense:</span>
+                            espera a <code>async setup()</code> y componentes diferidos antes de
+                            devolver el wrapper.
+                        </li>
+                        <li>
+                            Internamente usa Vue Test Utils&nbsp;<code>mount()</code>, así que
+                            sigues obteniendo un <code>wrapper</code> con todas sus API.
+                        </li>
+                    </ul>
+
+                    <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
+                        No es un sistema de mocks
+                    </h2>
+                    <p class="mb-4 leading-relaxed">
+                        Para espiar funciones o sustituir módulos usa las utilidades de Vitest
+                        (<code>vi.fn()</code>, <code>vi.mock()</code>) o
+                        <code>mockNuxtImport()</code>. <code>mountSuspended</code> solo se
+                        ocupa del <em>bootstrap</em> y sincronización.
+                    </p>
+
+                    <h2 class="mt-8 mb-4 text-2xl font-semibold text-emerald-300">
+                        Ejemplo rápido
+                    </h2>
+                    <pre class="bg-gray-900/60 p-4 rounded-lg text-sm overflow-x-auto shadow-inner"><code>import { describe, it, expect } from 'vitest'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
+import MyPage from '~/pages/index.vue'
+
+describe('Index page', () =&gt; {
+  it('renderiza correctamente', async () =&gt; {
+    const wrapper = await mountSuspended(MyPage)
+    expect(wrapper.text()).toContain('Hola Nuxt!')
+  })
+})</code></pre>
+
+                    <footer class="mt-10 text-sm text-gray-400">
+                        Documentación →
+                        <a href="https://nuxt.com/docs/api/test-utils" target="_blank" rel="noopener"
+                            class="underline hover:text-emerald-400 transition-colors duration-200">nuxt.com/docs
+                            › Test Utils</a>
+                    </footer>
 
                     <footer class="mt-10 text-sm text-gray-400">
                         Documentación oficial →
