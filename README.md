@@ -1,49 +1,73 @@
-Proyecto de Pruebas con Vitest y Vue.js
+Testing Project with Vitest and Vue.js
+Table of Contents
 
-Índice
-
-Introducción
-Setup
-Desarrollo
-Producción
-Pruebas
-Tecnologías utilizadas
-Recursos adicionales
-Introducción
-Este proyecto es un ejemplo de cómo utilizar Vitest y Vue.js para crear pruebas unitarias y de integración para una aplicación web. El proyecto incluye un conjunto de pruebas para un componente de Vue.js que resuelve el problema de FizzBuzz.
+Introduction
 
 Setup
-Para comenzar, asegúrese de instalar las dependencias del proyecto:
 
+Development
+
+Production
+
+Testing
+
+Technologies Used
+
+Additional Resources
+
+Introduction
+
+This project is an example of how to use Vitest and Vue.js to create unit and integration tests for a web application. The project includes a set of tests for a Vue.js component that solves the FizzBuzz problem.
+
+Setup
+
+To get started, make sure to install the project dependencies:
 
 npm install
-Desarrollo
-Para iniciar el servidor de desarrollo, ejecute:
 
+Development
+
+To start the development server, run:
 
 npm run dev
-Esto iniciará el servidor en http://localhost:3000.
 
-Producción
-Para construir la aplicación para producción, ejecute:
 
+This will start the server at http://localhost:3000
+.
+
+Production
+
+To build the application for production, run:
 
 npm run build
-Para previsualizar la construcción de producción localmente, ejecute:
 
+
+To preview the production build locally, run:
 
 npm run preview
-Pruebas
-Para ejecutar las pruebas, ejecute:
 
+Testing
+
+To run the tests, run:
 
 npm run test
-Tecnologías utilizadas
-Vitest: framework de pruebas para JavaScript
-Vue.js: framework de JavaScript para construir interfaces de usuario
-Nuxt.js: framework de Vue.js para construir aplicaciones web
-Recursos adicionales
-Documentación de Vitest
-Documentación de Vue.js
-Documentación de Nuxt.js
-Espero que este proyecto te sea útil como ejemplo de cómo utilizar Vitest y Vue.js para crear pruebas unitarias y de integración para tus aplicaciones web. ¡Buena suerte!
+
+Technologies Used
+
+Vitest: Testing framework for JavaScript
+
+Vue.js: JavaScript framework for building user interfaces
+
+Nuxt.js: Vue.js framework for building web applications
+
+Additional Resources
+
+Vitest Documentation
+
+Vue.js Documentation
+
+Nuxt.js Documentation
+
+I hope this project is useful as an example of how to use Vitest and Vue.js to create unit and integration tests for your web applications. Good luck!
+
+Do you also want me to polish it into a more professional, GitHub-ready README with badges, formatting, and installation notes?
